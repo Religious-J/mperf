@@ -36,6 +36,7 @@ After that you can get a picture like this:
 ![示例图片](./draw/result.png)
 
 
+ps. If you do not output function call stack information, please use `./code/mperf_less.cc` instead, it will greatly reduce the running time and the size of the generated analysis file.
 
 Library Interpositioning (CSAPP):
 

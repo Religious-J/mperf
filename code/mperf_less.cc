@@ -13,7 +13,7 @@ char buf[255];
 
 bool allow_record = true;
 
-const int MIN_RECORD = 32;     // 选择要记录的最小内存单元
+const int MIN_RECORD = 0;   // 选择要记录的最小内存单元
 
 size_t get_cur_ms() {
   struct timeval tv;
@@ -41,14 +41,14 @@ void *malloc(size_t size) {
 
   if (allow_record == true && size >= MIN_RECORD) {
     allow_record = false;
-    void *callstack[128];
-    int frames = backtrace(callstack, 128);
-    char **symbols = backtrace_symbols(callstack, frames);
-    printf("ALLOC ptr %p when %-7zu size %-7zu where ", ptr,
+    // void *callstack[128];
+    // int frames = backtrace(callstack, 128);
+    // char **symbols = backtrace_symbols(callstack, frames);
+    printf("ALLOC ptr %p when %-7zu size %-7zu", ptr,
            get_cur_ms() - time_base, size);
-    for (int i = 1; i < frames; i++) {
-      printf("%s ", symbols[i]);
-    }
+    // for (int i = 1; i < frames; i++) {
+    //   printf("%s ", symbols[i]);
+    // }
     printf("\n");
     allow_record = true;
   }
@@ -75,14 +75,14 @@ void *realloc(void *ptr, size_t size) {
 
   if (allow_record == true && size >= MIN_RECORD) {
     allow_record = false;
-    void *callstack[128];
-    int frames = backtrace(callstack, 128);
-    char **symbols = backtrace_symbols(callstack, frames);
-    printf("REALLOC ptr %p when %-7zu size %-7zu where ", new_ptr,
+    // void *callstack[128];
+    // int frames = backtrace(callstack, 128);
+    // char **symbols = backtrace_symbols(callstack, frames);
+    printf("REALLOC ptr %p when %-7zu size %-7zu", new_ptr,
            get_cur_ms() - time_base, size);
-    for (int i = 1; i < frames; i++) {
-      printf("%s ", symbols[i]);
-    }
+    // for (int i = 1; i < frames; i++) {
+    //   printf("%s ", symbols[i]);
+    // }
     printf("\n");
     allow_record = true;
   }
@@ -108,14 +108,14 @@ void *calloc(size_t nmemb, size_t size) {
 
   if (allow_record == true && size >= MIN_RECORD) {
     allow_record = false;
-    void *callstack[128];
-    int frames = backtrace(callstack, 128);
-    char **symbols = backtrace_symbols(callstack, frames);
-    printf("CALLOC ptr %p when %-7zu size %-7zu where ", ptr,
+    // void *callstack[128];
+    // int frames = backtrace(callstack, 128);
+    // char **symbols = backtrace_symbols(callstack, frames);
+    printf("CALLOC ptr %p when %-7zu size %-7zu", ptr,
            get_cur_ms() - time_base, nmemb * size);
-    for (int i = 1; i < frames; i++) {
-      printf("%s ", symbols[i]);
-    }
+    // for (int i = 1; i < frames; i++) {
+    //   printf("%s ", symbols[i]);
+    // }
     printf("\n");
     allow_record = true;
   }
