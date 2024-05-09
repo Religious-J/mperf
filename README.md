@@ -9,7 +9,7 @@ Assume the file is located in `/home/usr/mperf`
 
 ### COMPILE
 
-You can easily compile the code using the compile.sh script
+Easily compile the code using `compile.sh` script
 
 ```bash
 cd ./code
@@ -18,7 +18,7 @@ sh compile.sh
 
 ### RUN
 
-Add  `LD_PRELOAD = your_pth/mperf.so`  before you run your script 
+Add  `LD_PRELOAD = your_pth/mperf.so`  before run `run.sh` script 
 ```bash
 LD_PRELOAD=/home/usr/mperf/code/mperf.so ./run.sh
 ```
@@ -32,11 +32,11 @@ LD_PRELOAD=/home/usr/mperf/code/mperf.so ./run.sh | python /home/usr/mperf/draw/
 
 python /home/usr/mperf/draw/draw.py
 ```
-After that you can get a picture like this:
+After that can get an output like this:
 ![示例图片](./draw/result.png)
 
 
-ps. If you do not output function call stack information, please use `./code/mperf_less.cc` instead, it will greatly reduce the running time and the size of the generated analysis file.
+ps. If do not output the function call stack information, please use `./code/mperf_less.cc` instead, it will greatly reduce the running time and the size of the generated analysis file.
 
 Library Interpositioning (CSAPP):
 
